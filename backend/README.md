@@ -1,24 +1,40 @@
-# Fitness Meal Plan Application
+# Fitness Meal Plan Application - Backend
 
 Full-stack aplikacija za praćenje ishrane, treninga i napretka.
 
 ## 🚀 Brzi Start
 
-### 1. Migracije baze
-```cmd
-MIGRATE.bat
+### Automatska Setup (Preporučeno)
+Aplikacija automatski kreira bazu i tabele pri pokretanju!
+
+```bash
+# 1. Instaliraj zavisnosti
+go mod download
+
+# 2. Pokreni backend (kreira bazu i tabele automatski)
+go run main.go
 ```
 
-### 2. Pokretanje
-```cmd
-START.bat
+### Ručna Setup (Opciono)
+
+Ako želiš da ručno kreiraš bazu:
+
+```sql
+CREATE DATABASE app_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 ```
 
-Ili ručno:
-```cmd
-cd backend && go run main.go
-cd frontend && npm install && npm run dev
+### Konfiguracija
+
+Postavi environment varijable (opciono):
+```bash
+export DB_USER=root
+export DB_PASSWORD=your_password
+export DB_HOST=127.0.0.1
+export DB_PORT=3306
+export DB_NAME=app_db
 ```
+
+Ili koristi default vrednosti iz `utils/database.go`.
 
 ## 📁 Struktura
 

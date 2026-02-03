@@ -19,14 +19,14 @@ func getJWTSecret() string {
 	return secret
 }
 
-// Claims represents JWT claims
+// Claims predstavlja strukturu JWT zahteva
 type Claims struct {
 	UserID int    `json:"user_id"`
 	Email  string `json:"email"`
 	jwt.RegisteredClaims
 }
 
-// GenerateToken generates a JWT token for a user
+// GenerateToken generise JWT token za datog korisnika
 func GenerateToken(userID int, email string) (string, error) {
 	claims := &Claims{
 		UserID: userID,
@@ -42,7 +42,7 @@ func GenerateToken(userID int, email string) (string, error) {
 	return token.SignedString(jwtSecret)
 }
 
-// ValidateToken validates a JWT token and returns the claims
+// ValidateToken verifikuje i parsira JWT token
 func ValidateToken(tokenString string) (*Claims, error) {
 	token, err := jwt.ParseWithClaims(tokenString, &Claims{}, func(token *jwt.Token) (interface{}, error) {
 		if _, ok := token.Method.(*jwt.SigningMethodHMAC); !ok {
@@ -62,13 +62,13 @@ func ValidateToken(tokenString string) (*Claims, error) {
 	return nil, errors.New("invalid token")
 }
 
-// HashPassword hashes a password using bcrypt
+// HashPassword hesira lozinku koristeci bcrypt
 func HashPassword(password string) (string, error) {
 	bytes, err := bcrypt.GenerateFromPassword([]byte(password), bcrypt.DefaultCost)
 	return string(bytes), err
 }
 
-// CheckPassword checks if a password matches a hash
+// CheckPassword poredi i verifikuje lozinku sa hesom
 func CheckPassword(password, hash string) bool {
 	err := bcrypt.CompareHashAndPassword([]byte(hash), []byte(password))
 	return err == nil

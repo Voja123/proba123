@@ -22,3 +22,4 @@ echo ✅ All tables fixed!
 echo.
 pause
 
+

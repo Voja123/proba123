@@ -24,3 +24,4 @@ func JSONError(w http.ResponseWriter, message string, statusCode int) {
 	json.NewEncoder(w).Encode(response)
 }
 
+

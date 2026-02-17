@@ -145,6 +145,58 @@ The app automatically creates tables on startup. If you see table errors:
 2. Ensure user has CREATE TABLE permissions
 3. Check database connection in logs
 
+## Docker Setup
+
+You can run the entire stack (backend, frontend, MySQL and Swagger UI) using Docker and Docker Compose.
+
+### 1. Requirements
+
+- **Docker**
+- **Docker Compose**
+
+### 2. Start the whole stack
+
+From the project root (`proba123`):
+
+```bash
+docker-compose up --build
+```
+
+Services:
+
+- **Backend**: `http://localhost:8080`
+- **Frontend**: `http://localhost:5173`
+- **MySQL**: `localhost:3306` (user: `root`, password: `Vojislav123!`, db: `app_db`)
+- **Swagger UI**: `http://localhost:8081`
+
+To stop:
+
+```bash
+docker-compose down
+```
+
+To also remove database data:
+
+```bash
+docker-compose down -v
+```
+
+## Swagger / API Documentation
+
+API specifikacija je definisana u OpenAPI formatu u fajlu `backend/docs/openapi.yaml`.
+
+- **Swagger UI** (preko Dockera): `http://localhost:8081`
+- **Backend server**: `http://localhost:8080`
+
+Ukoliko želiš ručno da ažuriraš specifikaciju kada menjaš API:
+
+- izmeni `backend/docs/openapi.yaml` (dodaj/izmeni rute, modele, opise)
+- ponovo pokreni Swagger UI kontejner:
+
+```bash
+docker-compose up -d swagger-ui
+```
+
 ## Project Structure
 
 ```
@@ -169,4 +221,5 @@ proba123/
 ## License
 
 [Your License Here]
+
 

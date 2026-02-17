@@ -44,3 +44,4 @@ NAKON IZVRŠAVANJA:
 1. Restartujte backend: go run main.go
 2. Testirajte Workouts i Progress stranice
 
+

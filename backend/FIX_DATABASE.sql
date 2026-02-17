@@ -62,3 +62,4 @@ DESCRIBE workouts;
 -- Show structure of progress table
 DESCRIBE progress;
 
+
